@@ -8,6 +8,10 @@ The script asks the user to input the numbers and the operation to be performed,
 and prints the result to the terminal window.
 
 """
+def valid_number(num1):
+    if type(num1) == float or type(num1) == int:
+        return True
+    return False
 
 def simple_calculator(operation: str, num1: float, num2: float) -> float:
     """
@@ -42,8 +46,20 @@ def main():
     print(f"===== Simple Calculator =====")
 
     # Ask the user for sample input    
-    num1 = float(input("Enter the first number: "))
-    num2 = float(input("Enter the second number: "))
+    while True:
+        try:
+            num1 = float(input("Enter the first number: "))
+            break
+        except ValueError:
+            print("Please enter a valid number.")
+    
+    while True:
+        try:
+            num2 = float(input("Enter the second number: "))
+            break
+        except ValueError:
+            print("Please enter a valid number.")
+
     operation = input("Enter the operation (add, subtract, multiply, divide): ").strip().lower()
 
     # Perform the calculation and display the result
